@@ -1,0 +1,32 @@
+name: Node.js Package
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > ~/.npmrc
+
+      - run: cd core && npm ci
+      
+      # Выполняем тесты
+      - run: cd core && npm test
+
+      - run: cd core && npm run build
+
+      - run: cd core && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
