@@ -1,14 +1,11 @@
 {
-  "name": "@veatle/clsx",
-  "version": "1.0.0",
+  "name": "@veatla/clsx",
+  "version": "0.0.1",
   "description": "",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "pkgroll --tsconfig=tsconfig.lib.json",
     "preview": "vite preview",
@@ -18,8 +15,13 @@
     "./dist"
   ],
   "keywords": [],
-  "author": "",
+  "author": "altaev <ksixen@gmail.com>",
   "license": "ISC",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/veatla/store",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
