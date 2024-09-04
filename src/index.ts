@@ -24,10 +24,7 @@ export const clsx = (...args: unknown[]): string => {
 
                 for (let k = 0; k < keys.length; k++) {
                     const [key, value] = keys[k];
-                    if (typeof value === "function") {
-                        console.log('called', key)
-                        if (value()) values += ` ${clsx(key)}`;
-                    } else if (Boolean(value)) values += ` ${clsx(key)}`;
+                    if (Boolean(value)) values += ` ${clsx(key)}`;
                 }
 
                 className += values.trim();
